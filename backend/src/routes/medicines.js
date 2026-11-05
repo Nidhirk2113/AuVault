@@ -11,11 +11,21 @@ router.use(authenticate);
 const medicineSchema = z.object({
   name: z.string().min(1),
   sku: z.string().min(1),
+  category: z.enum([
+    'General medicines',
+    'Mental health medicines',
+    'Vitamins & supplements',
+    'Digestive health',
+    'Cold & respiratory',
+    'Uncategorized',
+  ]).default('Uncategorized'),
   batchNo: z.string().min(1),
   expiryDate: z.coerce.date(),
   pricePaise: z.number().int().min(0),
   stock: z.number().int().min(0),
   lowStockThreshold: z.number().int().min(0).default(10),
+  supplier: z.string().trim().default('Demo Supplier'),
+  requiresPrescription: z.boolean().default(false),
 });
 
 router.get('/', async (req, res) => {
