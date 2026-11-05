@@ -72,7 +72,7 @@ const additionalMedicines = [
   // Digestive health (8)
   { name: 'Pantoprazole 40mg', sku: 'PAN-40', category: 'Digestive health', batchNo: 'DIG201', pricePaise: 700, stock: 130, lowStockThreshold: 25, requiresPrescription: true },
   { name: 'Lactulose Syrup 100ml', sku: 'LAC-SYR-100', category: 'Digestive health', batchNo: 'DIG202', pricePaise: 950, stock: 45, lowStockThreshold: 12, requiresPrescription: false },
-  { name: 'Simethicone  simethicone 80mg', sku: 'SIM-80', category: 'Digestive health', batchNo: 'DIG203', pricePaise: 450, stock: 85, lowStockThreshold: 20, requiresPrescription: false },
+  { name: 'Simethicone 80mg', sku: 'SIM-80', category: 'Digestive health', batchNo: 'DIG203', pricePaise: 450, stock: 85, lowStockThreshold: 20, requiresPrescription: false },
   { name: 'Dicyclomine 10mg', sku: 'DICYC-10', category: 'Digestive health', batchNo: 'DIG204', pricePaise: 600, stock: 55, lowStockThreshold: 15, requiresPrescription: true },
   { name: 'Domperidone 10mg', sku: 'DOM-10', category: 'Digestive health', batchNo: 'DIG205', pricePaise: 500, stock: 70, lowStockThreshold: 18, requiresPrescription: true },
   { name: 'Probiotic Capsules', sku: 'PROBIO-CAP', category: 'Digestive health', batchNo: 'DIG206', pricePaise: 1800, stock: 32, lowStockThreshold: 10, requiresPrescription: false },
