@@ -11,11 +11,26 @@ const User = model('User', new Schema({
 const Medicine = model('Medicine', new Schema({
   name: { type: String, required: true, trim: true, index: true },
   sku: { type: String, required: true, unique: true },
+  category: {
+    type: String,
+    enum: [
+      'General medicines',
+      'Mental health medicines',
+      'Vitamins & supplements',
+      'Digestive health',
+      'Cold & respiratory',
+      'Uncategorized',
+    ],
+    default: 'Uncategorized',
+    index: true,
+  },
   batchNo: { type: String, required: true },
   expiryDate: { type: Date, required: true },
   pricePaise: { type: Number, required: true, min: 0 },
   stock: { type: Number, required: true, min: 0 },
   lowStockThreshold: { type: Number, default: 10, min: 0 },
+  supplier: { type: String, trim: true, default: 'Demo Supplier' },
+  requiresPrescription: { type: Boolean, default: false },
 }, { timestamps: true }));
 
 // Each item stores a snapshot of name and price so history stays correct after edits.
