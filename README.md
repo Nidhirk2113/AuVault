@@ -81,6 +81,27 @@ The Vite dev server proxies `/api` to the backend, so no extra CORS setup is nee
 
 ## Possible improvements
 
+
+### Connected Healthcare Ecosystem: HealthKonnect × AuVault
+
+A proposed future integration is to connect AuVault with **[HealthKonnect](https://github.com/Nidhirk2113/HealthKonnect)**, a separate clinic and mental-health platform. The goal is to explore a connected patient-to-pharmacy workflow while keeping both applications independently deployable, with their own databases, services and release cycles.
+
+Potential capabilities:
+
+1. **Prescription handoff:** Allow an authorised clinician to make a finalised prescription available to a connected pharmacy through a secure, authenticated API. AuVault would receive only the minimum prescription information required for verification and dispensing.
+2. **Medicine availability:** Let an authorised HealthKonnect workflow request availability information from AuVault, including whether a requested medicine is in stock. Availability responses should avoid exposing internal stock or supplier data unnecessarily.
+3. **Pharmacy verification and dispensing:** Let a pharmacist review the prescription, verify its status and dispense eligible items using AuVault's existing stock controls. Prescription verification must remain distinct from clinical prescribing.
+4. **Dispensing status updates:** Return a limited status to HealthKonnect, such as received, under review, partially dispensed, fully dispensed or unable to fulfil.
+5. **Reference-based linking:** Use unique, non-guessable prescription and integration references to associate records across systems without copying entire patient profiles or creating a shared database.
+6. **Operational insights:** Explore aggregated reporting on fulfilment rates, frequently requested medicines and availability trends, subject to appropriate access controls and de-identification.
+
+**Possible integration approach:** Use versioned REST APIs with service-to-service authentication, scoped permissions, request validation, idempotency keys, secure transport, audit events and explicit patient consent where applicable. Each application remains the system of record for its own data; direct database sharing is not planned.
+
+**Privacy and safety considerations:** Share only the minimum necessary data, verify prescription authenticity and validity, enforce pharmacist and clinician permissions, record access and dispensing events, and define revocation, retention and failure-handling procedures. Do not expose sensitive patient or prescription details in URLs or ordinary application logs. Any real-world deployment would require appropriate clinical, legal, privacy and regulatory review.
+
+**Status:** This is a conceptual future enhancement only. No live integration, shared authentication, cross-system API, prescription transfer or synchronised dispensing workflow is currently claimed as implemented.
+
+
 - Unit and integration tests for the dispense transaction
 - Pagination and CSV export
 - Email or SMS alerts for low stock
